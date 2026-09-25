@@ -1,0 +1,35 @@
+{
+  "schema_version": 2,
+  "name": "restart-between-pages",
+  "records": [
+    [
+      "alpha",
+      "1"
+    ],
+    [
+      "beta",
+      "1"
+    ],
+    [
+      "gamma",
+      "2"
+    ],
+    [
+      "delta",
+      "2"
+    ]
+  ],
+  "pages": [
+    [
+      "alpha",
+      "beta"
+    ],
+    [
+      "gamma",
+      "delta"
+    ]
+  ],
+  "retry_page": null,
+  "restart_page": 1,
+  "initial_ids": null
+}

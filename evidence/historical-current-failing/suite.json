@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "fail",
+      "message": "successful connector output differs from source oracle",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "e063bee48f30454eb9a20a0a1b9525bd",
+      "expected_count": 4,
+      "observed_count": 2,
+      "missing": [
+        [
+          "delta",
+          "2"
+        ],
+        [
+          "gamma",
+          "2"
+        ]
+      ],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": []
+    }
+  ]
+}

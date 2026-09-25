@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "scenario": "restart-between-pages",
+  "status": "pass",
+  "message": "all expected records materialized",
+  "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+  "python": "3.12.10",
+  "run_dir": ".",
+  "expected_count": 4,
+  "observed_count": 4,
+  "missing": [],
+  "unexpected": [],
+  "worker_exit_code": 0,
+  "events": [
+    "worker terminated while next source request was blocked",
+    "worker restarted with existing destination and state"
+  ],
+  "duration_seconds": 6.344
+}

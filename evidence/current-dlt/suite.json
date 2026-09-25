@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "b73d3165d9bb44bc8c1eefd8d0db2fb4",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 6.797
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "87811b8e19a3484198c33cf629155d38",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 5.0
+    },
+    {
+      "schema_version": 1,
+      "scenario": "equal-cursor-boundary",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "e4b3a618440d4f1b9e0571e4cb4064a1",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [
+        "second sync exposes new IDs at inclusive saved cursor boundary"
+      ],
+      "duration_seconds": 8.328
+    },
+    {
+      "schema_version": 1,
+      "scenario": "retryable-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "bdbffa55ce914df19471c0054d91072e",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 4.875
+    },
+    {
+      "schema_version": 1,
+      "scenario": "restart-between-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "745976ea248841baac885015a3d5ad48",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [
+        "worker terminated while next source request was blocked",
+        "worker restarted with existing destination and state"
+      ],
+      "duration_seconds": 6.344
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+      "python": "3.12.10",
+      "run_dir": "c6f01c4b2b6f474a8b4703c43cc4317a",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": []
+    }
+  ]
+}

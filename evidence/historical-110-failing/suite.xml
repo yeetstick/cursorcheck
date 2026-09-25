@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<testsuites><testsuite name="cursorcheck" tests="1" failures="1" errors="0" skipped="0"><testcase name="all-pages" classname="cursorcheck"><failure message="successful connector output differs from source oracle">{
+  "schema_version": 1,
+  "scenario": "all-pages",
+  "status": "fail",
+  "message": "successful connector output differs from source oracle",
+  "adapter": "cursorcheck.dlt_adapter:DltAdapter",
+  "python": "3.12.10",
+  "run_dir": "b30fe1f84f294721aa1797a52994af04",
+  "expected_count": 4,
+  "observed_count": 2,
+  "missing": [
+    [
+      "delta",
+      "2"
+    ],
+    [
+      "gamma",
+      "2"
+    ]
+  ],
+  "unexpected": [],
+  "worker_exit_code": 0,
+  "events": []
+}</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,7 @@
+{
+  "dlt": "1.10.0",
+  "duckdb": "1.2.2",
+  "pagination": "child-endpoint",
+  "destination": "DuckDB",
+  "synthetic_configuration": true
+}

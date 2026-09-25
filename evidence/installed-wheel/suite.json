@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.reference:ReferenceAdapter",
+      "python": "3.12.10",
+      "run_dir": "bb0f5c871bb1464097630a6ce18c7515",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 1.25
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.reference:ReferenceAdapter",
+      "python": "3.12.10",
+      "run_dir": "437543b5583f406d8300712536bd4dff",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 1.078
+    },
+    {
+      "schema_version": 1,
+      "scenario": "equal-cursor-boundary",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.reference:ReferenceAdapter",
+      "python": "3.12.10",
+      "run_dir": "ba8259396b694a18af210f29708facbe",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [
+        "second sync exposes new IDs at inclusive saved cursor boundary"
+      ],
+      "duration_seconds": 1.781
+    },
+    {
+      "schema_version": 1,
+      "scenario": "retryable-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.reference:ReferenceAdapter",
+      "python": "3.12.10",
+      "run_dir": "04e3f5739c314ab6bf0015b2f69ab51f",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 2.141
+    },
+    {
+      "schema_version": 1,
+      "scenario": "restart-between-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.reference:ReferenceAdapter",
+      "python": "3.12.10",
+      "run_dir": "4c932229b3ec485b8502659d60baf4af",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [
+        "worker terminated while next source request was blocked",
+        "worker restarted with existing destination and state"
+      ],
+      "duration_seconds": 1.656
+    }
+  ]
+}

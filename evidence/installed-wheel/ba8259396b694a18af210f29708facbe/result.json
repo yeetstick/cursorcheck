@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "scenario": "equal-cursor-boundary",
+  "status": "pass",
+  "message": "all expected records materialized",
+  "adapter": "cursorcheck.reference:ReferenceAdapter",
+  "python": "3.12.10",
+  "run_dir": ".",
+  "expected_count": 4,
+  "observed_count": 4,
+  "missing": [],
+  "unexpected": [],
+  "worker_exit_code": 0,
+  "events": [
+    "second sync exposes new IDs at inclusive saved cursor boundary"
+  ],
+  "duration_seconds": 1.781
+}

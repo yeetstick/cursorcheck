@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cursorcheck"
+version = "0.0.2"
+description = "Bounded pagination and recovery checks against materialized connector output"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.urls]
+Repository = "https://github.com/yeetstick/cursorcheck"
+Issues = "https://github.com/yeetstick/cursorcheck/issues"
+
+[project.optional-dependencies]
+dlt = ["dlt[duckdb]==1.30.0", "duckdb==1.5.5"]
+test = ["hypothesis==6.168.1"]
+
+[project.scripts]
+cursorcheck = "cursorcheck.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
