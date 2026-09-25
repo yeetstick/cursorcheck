@@ -33,7 +33,8 @@ class ConfigCliTests(unittest.TestCase):
         original = config.read_text()
         self.assertEqual(self.call("init", "--config", str(config), "--dlt")[0], 2)
         self.assertEqual(config.read_text(), original)
-        self.assertEqual(Settings.load(config).output, self.root / ".cursorcheck/runs")
+        # Windows TEMP may use an 8.3 alias; macOS /var may resolve via /private.
+        self.assertEqual(Settings.load(config).output, (self.root / ".cursorcheck/runs").resolve())
 
     def test_doctor_has_no_execution_artifacts(self):
         config = self.root / "cursorcheck.toml"
