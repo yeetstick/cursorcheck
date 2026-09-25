@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scenario": "empty-middle-page",
+  "status": "pass",
+  "message": "all expected records materialized",
+  "adapter": "adapter:WidenAdapter",
+  "python": "3.12.10",
+  "run_dir": ".",
+  "expected_count": 4,
+  "observed_count": 4,
+  "missing": [],
+  "unexpected": [],
+  "worker_exit_code": 0,
+  "events": [],
+  "duration_seconds": 2.594
+}

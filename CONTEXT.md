@@ -19,6 +19,12 @@ The Singer reproduction uses the SDK's real RESTStream and a minimal SQLite
 sink. It isolates the empty-page continuation hook added in SDK 0.46.0; it is
 not a production tap/target integration and declares recovery unsupported.
 
+`examples/widen_rest_api` wires a pinned, existing third-party tap through its
+full sync entry point and a disposable Singer-to-SQLite sink. A local experimental
+upstream patch is retained for comparison. No maintainer participated; do not
+count this as independent onboarding or adoption. Its direct pytest alternative
+is smaller for a single pagination case.
+
 Core runtime is standard-library Python. dlt/DuckDB and Hypothesis are optional
 extras. No cloud services, telemetry, production credentials or downloads occur
 when running the core tests. See README for trust and platform limits.

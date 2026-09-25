@@ -1,0 +1,95 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index f777655..87cee3e 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -18,9 +18,9 @@ repository = "https://github.com/Widen/tap-rest-api-msdk"
+ readme = "README.md"
+ 
+ [tool.poetry.dependencies]
+-python = ">=3.8"
++python = ">=3.9"
+ requests = "^2.25.1"
+-singer-sdk = { version = "^0.40.0", python = "<4" }
++singer-sdk = { version = "^0.46.0", python = "<4" }
+ genson = "^1.2.2"
+ atomicwrites = "^1.4.0"
+ requests-aws4auth = "^1.2.3"
+diff --git a/tap_rest_api_msdk/streams.py b/tap_rest_api_msdk/streams.py
+index d54dfdb..235c76d 100644
+--- a/tap_rest_api_msdk/streams.py
++++ b/tap_rest_api_msdk/streams.py
+@@ -39,6 +39,14 @@ from tap_rest_api_msdk.utils import flatten_json, get_start_date
+ # requests_log.propagate = True
+ 
+ 
++class ContinuingJSONPathPaginator(JSONPathPaginator):
++    """Experimental: treat an explicit next token as authoritative on empty pages."""
++
++    def continue_if_empty(self, response: requests.Response) -> bool:
++        """Continue only when the response supplies a successor token."""
++        return self.get_next(response) is not None
++
++
+ class DynamicStream(RestApiStream):
+     """Define custom stream."""
+ 
+@@ -291,7 +299,7 @@ class DynamicStream(RestApiStream):
+             self.pagination_request_style == "jsonpath_paginator"
+             or self.pagination_request_style == "default"
+         ):
+-            return JSONPathPaginator(self.next_page_token_jsonpath)
++            return ContinuingJSONPathPaginator(self.next_page_token_jsonpath)
+         elif (
+             self.pagination_request_style == "simple_header_paginator"
+         ):  # Example Gitlab.com
+diff --git a/tests/test_empty_page_regression.py b/tests/test_empty_page_regression.py
+new file mode 100644
+index 0000000..e14fca5
+--- /dev/null
++++ b/tests/test_empty_page_regression.py
+@@ -0,0 +1,29 @@
++"""A direct regression in the upstream project's existing pytest style.
++
++Intentionally fails on the unmodified pinned connector. This checks emitted
++records using mocked HTTP, rather than a subprocess and a materialized sink.
++"""
++
++from tap_rest_api_msdk.tap import TapRestApiMsdk
++
++
++def test_empty_middle_page_with_next_token(requests_mock):
++    url = "https://example.com/records"
++    first = [{"id": "alpha", "version": "1"}, {"id": "beta", "version": "1"}]
++    last = [{"id": "gamma", "version": "2"}, {"id": "delta", "version": "2"}]
++    for request_url, items, token in (
++        (url, first, "second"),
++        (url + "?cursor=second", [], "third"),
++        (url + "?cursor=third", last, None),
++    ):
++        requests_mock.get(request_url, complete_qs=True, json={"items": items, "next": token})
++    config = {
++        "api_url": "https://example.com",
++        "next_page_token_path": "$.next", "pagination_next_page_param": "cursor",
++        "pagination_request_style": "jsonpath_paginator", "pagination_response_style": "page",
++        "streams": [{"name": "records", "path": "/records", "primary_keys": ["id"],
++                     "records_path": "$.items[*]", "schema": {"type": "object", "properties": {
++                         "id": {"type": "string"}, "version": {"type": "string"}}}}],
++    }
++    stream = TapRestApiMsdk(config=config, parse_env_config=False).discover_streams()[0]
++    assert list(stream.get_records({})) == first + last
+diff --git a/tests/test_tap.py b/tests/test_tap.py
+index bee27ab..0dacc2f 100644
+--- a/tests/test_tap.py
++++ b/tests/test_tap.py
+@@ -15,7 +15,10 @@ def test_schema_inference(requests_mock):
+         0
+     ]
+ 
+-    assert stream0.schema == BASIC_SCHEMA
++    assert stream0.schema == {
++        **BASIC_SCHEMA,
++        "$schema": "https://json-schema.org/draft/2020-12/schema",
++    }
+ 
+ 
+ def test_schema_from_file():

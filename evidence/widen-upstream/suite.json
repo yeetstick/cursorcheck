@@ -1,0 +1,92 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "adapter:WidenAdapter",
+      "python": "3.12.10",
+      "run_dir": "ad04df81cadc4c5ab388ce8cfb3a1857",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 1.969
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "fail",
+      "message": "successful connector output differs from source oracle",
+      "adapter": "adapter:WidenAdapter",
+      "python": "3.12.10",
+      "run_dir": "7c19d0d40c4042ee8edde192edad6a02",
+      "expected_count": 4,
+      "observed_count": 2,
+      "missing": [
+        [
+          "delta",
+          "2"
+        ],
+        [
+          "gamma",
+          "2"
+        ]
+      ],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 2.266
+    },
+    {
+      "schema_version": 1,
+      "scenario": "retryable-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "adapter:WidenAdapter",
+      "python": "3.12.10",
+      "run_dir": "0a5b81dbaac3499882db184ca94d66af",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 3.828
+    },
+    {
+      "schema_version": 1,
+      "scenario": "restart-between-pages",
+      "status": "unsupported",
+      "message": "adapter has not declared the required persistence capability",
+      "adapter": "adapter:WidenAdapter",
+      "python": "3.12.10",
+      "run_dir": "412a135752034278b90c2b220fefc15d",
+      "expected_count": 4,
+      "observed_count": null,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": null,
+      "events": []
+    },
+    {
+      "schema_version": 1,
+      "scenario": "equal-cursor-boundary",
+      "status": "unsupported",
+      "message": "adapter has not declared the required persistence capability",
+      "adapter": "adapter:WidenAdapter",
+      "python": "3.12.10",
+      "run_dir": "a2f4a6d7173147a5b4e04c99a15bcdb4",
+      "expected_count": 4,
+      "observed_count": null,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": null,
+      "events": []
+    }
+  ]
+}

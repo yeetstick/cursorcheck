@@ -1,0 +1,8 @@
+{
+  "tap-rest-api-msdk": "1.4.2",
+  "singer-sdk": "0.46.5",
+  "upstream_base_revision": "071b54032beecba75f6100b90281c1d88a47dfde",
+  "streams_sha256_lf": "48e2bd2a9d87c45d03ca729970740d62599d1c6e487a640b0ac26a8e206b05e0",
+  "destination": "disposable Singer RECORD-to-SQLite sink",
+  "production_target": false
+}

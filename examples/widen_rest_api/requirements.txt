@@ -1,0 +1,5 @@
+# Use a separate virtual environment: this historical tap pins an older SDK.
+tap-rest-api-msdk @ git+https://github.com/Widen/tap-rest-api-msdk.git@071b54032beecba75f6100b90281c1d88a47dfde
+setuptools==80.9.0
+pytest==8.4.2
+requests-mock==1.12.1

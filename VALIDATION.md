@@ -78,7 +78,16 @@ production Singer target. Each version passed its three regression tests.
 
 ## Limits of this evidence
 
-- These are bundled synthetic integrations, not independent users or adopters.
+An [author-run trial of Widen's REST tap](examples/widen_rest_api/README.md) now
+uses the same source contract with an unmodified external connector and a
+disposable Singer-to-SQLite sink. Its 7 existing pytest tests passed; CursorCheck
+detected known empty-page loss. A local connector patch passes the saved fixture
+and 8 upstream tests (including a new direct regression). Ordinary pagination
+and retry pass on both variants; recovery is unsupported. This is one external
+code integration, not independent onboarding or maintainer adoption.
+
+- All data is synthetic; the framework examples and external tap trial do not
+  constitute independent users or adopters.
 - Three independent project integrations and onboarding measurements are pending.
 - Two historical failure classes have been reproduced; the dlt comparison uses
   a configuration workaround, and the Singer comparison uses an opt-in hook.

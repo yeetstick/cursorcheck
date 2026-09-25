@@ -36,3 +36,37 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install . "singer-sdk==${{ matrix.sdk }}"
       - run: python -m unittest discover -s tests -p test_singer_reproduction.py -v
+  widen-trial:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - variant: upstream
+            expected_empty: fail
+          - variant: patched
+            expected_empty: pass
+    name: widen-trial (${{ matrix.variant }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@v7
+        with:
+          repository: Widen/tap-rest-api-msdk
+          ref: 071b54032beecba75f6100b90281c1d88a47dfde
+          path: .cursorcheck/upstream
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: git apply ../../examples/widen_rest_api/experimental-empty-page.patch
+        working-directory: .cursorcheck/upstream
+        if: matrix.variant == 'patched'
+      - run: python -m pip install . ./.cursorcheck/upstream "setuptools==80.9.0" "pytest==8.4.2" "requests-mock==1.12.1"
+      - run: python -m pytest -q -p no:cacheprovider tests
+        working-directory: .cursorcheck/upstream
+      - run: python -m unittest discover -s examples/widen_rest_api -p test_trial.py -v
+        env:
+          WIDEN_EXPECT_EMPTY: ${{ matrix.expected_empty }}

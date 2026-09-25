@@ -108,6 +108,11 @@ Do not move the connector's algorithm into the adapter. If this contract cannot
 represent the connector's actual source, report the mismatch rather than
 rewriting the connector to make the test pass. See [PILOT.md](PILOT.md).
 
+The [Widen REST tap trial](examples/widen_rest_api/README.md) runs an existing
+external connector through this interface, compares a direct pytest alternative,
+and retains before/after evidence. It is an author-run compatibility trial, not
+an independent adopter.
+
 ## Reports and replay
 
 Each case saves `replay.json`, a bounded `requests.jsonl` transcript, `result.json`

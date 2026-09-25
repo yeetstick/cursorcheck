@@ -1,5 +1,11 @@
 # First independent pilot
 
+An [author-run external connector trial](examples/widen_rest_api/README.md) is now
+available for Widen's REST tap. It reuses the existing fixtures without a source
+profile change and reproduces the known empty-page loss. It is not independent
+onboarding or maintainer adoption. The direct pytest alternative is smaller for
+this single case, so the standalone-product gate remains open.
+
 Goal: determine whether a developer can wire an existing connector into the same
 fixtures without rewriting its pagination or checkpoint logic.
 

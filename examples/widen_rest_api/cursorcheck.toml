@@ -1,0 +1,8 @@
+schema_version = 1
+adapter = "adapter:build_adapter"
+scenarios = ["all-pages", "empty-middle-page", "retryable-page", "restart-between-pages", "equal-cursor-boundary"]
+output = "../../.cursorcheck/widen"
+
+[limits]
+case_timeout_seconds = 30
+max_requests = 100

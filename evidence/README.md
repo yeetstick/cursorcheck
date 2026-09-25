@@ -10,6 +10,11 @@ The `singer-*` directories compare the empty-page continuation hook across SDK
 0.45.0, 0.46.0 and 0.54.5. These are synthetic SDK streams with a minimal SQLite
 sink, not independent connector pilots. See [the reproduction notes](../SINGER.md).
 
+The `widen-*` directories contain an [external tap compatibility trial](../examples/widen_rest_api/README.md),
+including upstream pytest results and a saved-fixture replay against a local
+experimental patch. The tap is real; its SQLite test sink is custom. Unsupported
+recovery results are retained. Maintainers did not participate in this trial.
+
 Machine-specific `run_dir` values are normalized to relative case directories;
 all test results and observations are preserved. Corresponding report files are
 present beside each other here. Databases
