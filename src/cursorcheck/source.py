@@ -3,11 +3,20 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from pathlib import Path
+from socketserver import TCPServer
 import sys
 import time
 from urllib.parse import parse_qs, urlsplit
 
 from .core import Fixture
+
+
+class _LoopbackServer(HTTPServer):
+    def server_bind(self):
+        # HTTPServer resolves a hostname here. A numeric loopback fixture needs
+        # no DNS, and macOS resolvers can block beyond the entire case deadline.
+        TCPServer.server_bind(self)
+        self.server_name, self.server_port = self.server_address[:2]
 
 
 def serve(directory: Path, secret: str, max_requests: int) -> None:
@@ -70,7 +79,7 @@ def serve(directory: Path, secret: str, max_requests: int) -> None:
             except (BrokenPipeError, ConnectionResetError):
                 pass
 
-    with HTTPServer(("127.0.0.1", 0), Handler) as server:
+    with _LoopbackServer(("127.0.0.1", 0), Handler) as server:
         ready = directory / "ready.tmp"
         ready.write_text(json.dumps({"port": server.server_port}), encoding="utf-8")
         ready.replace(directory / "ready.json")
