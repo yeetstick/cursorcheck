@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.singer_repro:SingerReproduction",
+      "python": "3.12.10",
+      "run_dir": "f824acc1c9124e9fa9d06e7907b4c064",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 2.407
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "fail",
+      "message": "successful connector output differs from source oracle",
+      "adapter": "cursorcheck.singer_repro:SingerReproduction",
+      "python": "3.12.10",
+      "run_dir": "22e370e9541642c48422d7dad3b6916f",
+      "expected_count": 4,
+      "observed_count": 2,
+      "missing": [
+        [
+          "delta",
+          "2"
+        ],
+        [
+          "gamma",
+          "2"
+        ]
+      ],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 2.297
+    }
+  ]
+}

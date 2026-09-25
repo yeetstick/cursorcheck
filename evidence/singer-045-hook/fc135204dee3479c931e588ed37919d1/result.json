@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "scenario": "empty-middle-page",
+  "status": "fail",
+  "message": "successful connector output differs from source oracle",
+  "adapter": "cursorcheck.singer_repro:SingerReproduction",
+  "python": "3.12.10",
+  "run_dir": ".",
+  "expected_count": 4,
+  "observed_count": 2,
+  "missing": [
+    [
+      "delta",
+      "2"
+    ],
+    [
+      "gamma",
+      "2"
+    ]
+  ],
+  "unexpected": [],
+  "worker_exit_code": 0,
+  "events": [],
+  "duration_seconds": 2.703
+}

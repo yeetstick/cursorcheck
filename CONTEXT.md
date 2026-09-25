@@ -1,6 +1,6 @@
 # Development context
 
-CursorCheck 0.0.2 is a local pilot build. The adjacent blueprint describes the
+CursorCheck 0.0.3 is a pilot build. The adjacent blueprint describes the
 larger proposed project. Five scenarios are implemented, but external adoption,
 independent onboarding and the entire v0.1 acceptance gate are not satisfied.
 
@@ -14,6 +14,10 @@ The reference worker commits SQLite output/checkpoint together; opt-in seeded
 modes violate specific invariants. The dlt adapter configures real framework
 pagination and loading. Its dependent-resource modes reproduce a reported
 configuration behavior without modifying framework algorithms.
+
+The Singer reproduction uses the SDK's real RESTStream and a minimal SQLite
+sink. It isolates the empty-page continuation hook added in SDK 0.46.0; it is
+not a production tap/target integration and declares recovery unsupported.
 
 Core runtime is standard-library Python. dlt/DuckDB and Hypothesis are optional
 extras. No cloud services, telemetry, production credentials or downloads occur

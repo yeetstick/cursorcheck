@@ -4,7 +4,7 @@ Find records a REST connector silently drops across pagination, retries and
 restarts. CursorCheck runs a real worker against a controlled local API, then
 compares its durable output with an independent source oracle.
 
-**Experimental version 0.0.2.** Passing covers the declared fixtures, not every
+**Experimental version 0.0.3.** Passing covers the declared fixtures, not every
 production API behavior. Package-name availability has not been checked and no
 package has been published to PyPI. See [validation evidence](VALIDATION.md).
 
@@ -13,6 +13,8 @@ package has been published to PyPI. See [validation evidence](VALIDATION.md).
 Python 3.12 or newer. Install this checkout in your own virtual environment:
 
 ```text
+git clone https://github.com/yeetstick/cursorcheck.git
+cd cursorcheck
 python -m pip install .
 cursorcheck demo
 cursorcheck init
@@ -67,6 +69,10 @@ cursorcheck run --scenario all-pages --adapter cursorcheck.dlt_adapter:build_sin
 This should exit 1 with `delta/2` and `gamma/2` missing. It is a configuration
 defect, not a newly discovered dlt bug. Historical reproduction commands and
 version details are in [HISTORICAL.md](HISTORICAL.md).
+
+A second [historical reproduction](SINGER.md) exercises Singer SDK's empty-page
+continuation hook across versions 0.45.0, 0.46.0 and 0.54.5. It uses the same
+fixture and a minimal SQLite sink; it is not a production Singer target adapter.
 
 ## Adapt your existing connector
 

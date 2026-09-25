@@ -1,0 +1,6 @@
+{
+  "singer-sdk": "0.54.5",
+  "continue_if_empty": false,
+  "destination": "minimal SQLite sink (not a Singer target)",
+  "synthetic_configuration": true
+}

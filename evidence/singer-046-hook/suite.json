@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.singer_repro:SingerReproduction",
+      "python": "3.12.10",
+      "run_dir": "a2ae183263724b97b70b2f7432347206",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 4.172
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "cursorcheck.singer_repro:SingerReproduction",
+      "python": "3.12.10",
+      "run_dir": "ec60550ecd1c4b9bb61c3f8773990b01",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 2.406
+    }
+  ]
+}
