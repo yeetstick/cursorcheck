@@ -1,0 +1,48 @@
+{
+  "version": "7.30.0",
+  "type": "DeclarativeSource",
+  "check": {"type": "CheckStream", "stream_names": ["records"]},
+  "streams": [{
+    "type": "DeclarativeStream",
+    "name": "records",
+    "primary_key": ["id"],
+    "retriever": {
+      "type": "SimpleRetriever",
+      "requester": {
+        "type": "HttpRequester",
+        "url_base": "{{ config['url'] }}",
+        "path": "{{ config['path'] }}",
+        "http_method": "GET",
+        "error_handler": {
+          "type": "DefaultErrorHandler",
+          "max_retries": 2,
+          "backoff_strategies": [{"type": "WaitTimeFromHeader", "header": "Retry-After"}]
+        }
+      },
+      "record_selector": {
+        "type": "RecordSelector",
+        "extractor": {"type": "DpathExtractor", "field_path": ["items"]}
+      },
+      "paginator": {
+        "type": "DefaultPaginator",
+        "pagination_strategy": {
+          "type": "CursorPagination",
+          "cursor_value": "{{ response.get('next') }}",
+          "stop_condition": "{{ not response.get('next') }}"
+        },
+        "page_token_option": {"type": "RequestOption", "inject_into": "request_parameter", "field_name": "cursor"}
+      }
+    },
+    "schema_loader": {
+      "type": "InlineSchemaLoader",
+      "schema": {"type": "object", "properties": {"id": {"type": "string"}, "version": {"type": "string"}}}
+    }
+  }],
+  "spec": {
+    "type": "Spec",
+    "connection_specification": {
+      "type": "object", "required": ["url", "path"],
+      "properties": {"url": {"type": "string"}, "path": {"type": "string"}}
+    }
+  }
+}

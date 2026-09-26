@@ -1,0 +1,3 @@
+{"request": 1, "page": 0, "status": 200, "ids": ["alpha", "beta"], "has_next": true}
+{"request": 2, "page": 1, "status": 200, "ids": [], "has_next": true}
+{"request": 3, "page": 2, "status": 200, "ids": ["gamma", "delta"], "has_next": false}

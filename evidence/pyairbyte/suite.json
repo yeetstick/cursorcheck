@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "cases": [
+    {
+      "schema_version": 1,
+      "scenario": "all-pages",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "adapter:PyAirbyteAdapter",
+      "python": "3.12.10",
+      "run_dir": "fa50ee5169894f32ada33b9184ddc5fb",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 35.985
+    },
+    {
+      "schema_version": 1,
+      "scenario": "empty-middle-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "adapter:PyAirbyteAdapter",
+      "python": "3.12.10",
+      "run_dir": "a83f7a3035b240f59e8f39f6d58e4c90",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 38.813
+    },
+    {
+      "schema_version": 1,
+      "scenario": "retryable-page",
+      "status": "pass",
+      "message": "all expected records materialized",
+      "adapter": "adapter:PyAirbyteAdapter",
+      "python": "3.12.10",
+      "run_dir": "ea220273f2074b9597c2afe720faae63",
+      "expected_count": 4,
+      "observed_count": 4,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": 0,
+      "events": [],
+      "duration_seconds": 32.297
+    },
+    {
+      "schema_version": 1,
+      "scenario": "restart-between-pages",
+      "status": "unsupported",
+      "message": "adapter has not declared the required persistence capability",
+      "adapter": "adapter:PyAirbyteAdapter",
+      "python": "3.12.10",
+      "run_dir": "8d500a9437714c18a17fc938460816df",
+      "expected_count": 4,
+      "observed_count": null,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": null,
+      "events": []
+    },
+    {
+      "schema_version": 1,
+      "scenario": "equal-cursor-boundary",
+      "status": "unsupported",
+      "message": "adapter has not declared the required persistence capability",
+      "adapter": "adapter:PyAirbyteAdapter",
+      "python": "3.12.10",
+      "run_dir": "2be075b227b9401482c6ae8225088cff",
+      "expected_count": 4,
+      "observed_count": null,
+      "missing": [],
+      "unexpected": [],
+      "worker_exit_code": null,
+      "events": []
+    }
+  ]
+}

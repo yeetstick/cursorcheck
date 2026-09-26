@@ -113,6 +113,12 @@ external connector through this interface, compares a direct pytest alternative,
 and retains before/after evidence. It is an author-run compatibility trial, not
 an independent adopter.
 
+The optional [PyAirbyte example](examples/pyairbyte/README.md) uses a synthetic
+declarative source and PyAirbyte's real DuckDB cache. Run it in a separate
+environment from dlt. It supports pagination, empty-page continuation and retry;
+restart and incremental recovery remain unsupported. It is not an existing
+provider connector integration.
+
 ## Reports and replay
 
 Each case saves `replay.json`, a bounded `requests.jsonl` transcript, `result.json`
@@ -146,8 +152,8 @@ to filesystem quotas. Use only disposable test destinations.
 
 Windows worker trees run inside a Job Object; POSIX workers run in an owned
 session. Normal completion, errors and restart paths terminate descendants.
-Windows behavior has been exercised locally. The POSIX implementation and the
-prepared GitHub Actions matrix still require Linux/macOS execution. Code that
+Windows behavior has been exercised locally; the integration suite also passes
+on Linux and macOS in GitHub Actions (see [VALIDATION.md](VALIDATION.md)). Code that
 deliberately escapes the session is outside the POSIX ownership contract.
 
 The runner retains case artifacts and never deletes a user destination. It does

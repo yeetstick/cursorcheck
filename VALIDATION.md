@@ -78,6 +78,17 @@ production Singer target. Each version passed its three regression tests.
 
 ## Limits of this evidence
 
+The [PyAirbyte framework trial](examples/pyairbyte/README.md) uses PyAirbyte
+0.71.0, Airbyte CDK 7.30.0 and DuckDB 1.4.3 in a separate environment. On native
+Windows, ordinary pagination, empty-page continuation and retry each produced
+four durable rows through PyAirbyte's DuckDBCache. No core or source contract
+changes were required. Its purpose-built manifest is not an existing provider
+connector, and restart/incremental recovery remain unsupported. Portable
+evidence is in `evidence/pyairbyte/`. A deliberately disabled paginator returned
+success with only two rows; CursorCheck reported the two missing IDs. Its report
+is in `evidence/pyairbyte-negative/`. The dedicated integration test passed in
+134.493 seconds, checking five scenario outcomes and the seeded negative control.
+
 An [author-run trial of Widen's REST tap](examples/widen_rest_api/README.md) now
 uses the same source contract with an unmodified external connector and a
 disposable Singer-to-SQLite sink. Its 7 existing pytest tests passed; CursorCheck

@@ -25,6 +25,12 @@ upstream patch is retained for comparison. No maintainer participated; do not
 count this as independent onboarding or adoption. Its direct pytest alternative
 is smaller for a single pagination case.
 
+`examples/pyairbyte` is a synthetic declarative source using PyAirbyte's real
+DuckDBCache. It does not wrap an existing provider connector and does not count
+as a second external project integration. It uses a separate environment due to
+the DuckDB version conflict with dlt. Restart and incremental recovery are
+unsupported; a seeded NoPagination configuration checks the durable-output oracle.
+
 Core runtime is standard-library Python. dlt/DuckDB and Hypothesis are optional
 extras. No cloud services, telemetry, production credentials or downloads occur
 when running the core tests. See README for trust and platform limits.

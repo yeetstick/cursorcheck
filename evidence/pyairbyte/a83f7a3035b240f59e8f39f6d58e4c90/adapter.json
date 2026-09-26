@@ -1,0 +1,10 @@
+{
+  "airbyte": "0.71.0",
+  "airbyte-cdk": "7.30.0",
+  "duckdb": "1.4.3",
+  "destination": "PyAirbyte DuckDBCache",
+  "synthetic_manifest": true,
+  "production_connector": false,
+  "seeded_single_page": false,
+  "manifest_sha256_lf": "0783ea67730487851036e9c879b4efb93fe7895ce4555559e80b719598986792"
+}
